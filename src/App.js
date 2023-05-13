@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [timer, setTimer] = useState(5);
+  // const [checkTimer, setCheckTimeout] = useState(false);
+
+  const counter = setInterval(() => {
+    setTimer(timer - 1);
+  }, 1000);
+  if (timer === 0) {
+    clearInterval(counter);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p className="center">{timer}</p>
     </div>
   );
 }
